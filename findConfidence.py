@@ -38,8 +38,12 @@ def isOverlapping(bugfree, buggy):
         return 1
 
 
+def save(usefulDf):
+    path = workingDirectory + "\modified" # save in the modified subdirectory
+    usefulDf.to_csv(os.path.join(path, file), index=False) # row numbers  not stored
+
 workingDirectory = os.getcwd()      # gets the current working directory
-directory = os.path.join(workingDirectory, "classInfo")     # concatenates
+directory = os.path.join(workingDirectory, "test_classInfo")     # concatenates
 csvFiles = os.listdir(directory)    # list of all files in the directory
 
 for file in csvFiles:
@@ -65,5 +69,5 @@ for file in csvFiles:
     print('Useful features for ' + file + ' are: ')
     print(usefulFeatures)
     usefulDf = df.loc[:, usefulFeatures]  # new dataframe which has columns as useful features only
-    print(usefulDf.head())
+    save(usefulDf)  # save useful dataframe to csv
     print()
