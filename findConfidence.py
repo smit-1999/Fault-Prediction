@@ -1,4 +1,3 @@
-import numpy as np
 import pandas as pd
 import os
 import statistics
@@ -39,11 +38,12 @@ def isOverlapping(bugfree, buggy):
 
 
 def save(usefulDf):
-    path = workingDirectory + "\modified" # save in the modified subdirectory
-    usefulDf.to_csv(os.path.join(path, file), index=False) # row numbers  not stored
+    path = workingDirectory + "\modified"  # save in the modified subdirectory
+    usefulDf.to_csv(os.path.join(path, file), index=False)  # row numbers  not stored
+
 
 workingDirectory = os.getcwd()      # gets the current working directory
-directory = os.path.join(workingDirectory, "test_classInfo")     # concatenates
+directory = os.path.join(workingDirectory, "classInfo")     # concatenates
 csvFiles = os.listdir(directory)    # list of all files in the directory
 
 for file in csvFiles:
