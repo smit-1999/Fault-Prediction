@@ -5,7 +5,11 @@ from sklearn.linear_model import LinearRegression
 
 
 def get_csv():
-
+    """
+    This method fetches the csv files in the dataset and returns them.
+    :return: It returns the directory of the dataset and the list of
+     files object.
+    """
     curr_dir = os.getcwd()  # gets the current working directory
     directory = os.path.join(curr_dir, "test_classInfo")  # concatenates
     csv_files = os.listdir(directory)  # list of all files in the directory
@@ -16,14 +20,14 @@ def main():
     directory, csv_files = get_csv()
 
     for file in csv_files:
-        df = pd.read_csv(directory + "\\" + file)
+        df = pd.read_csv(directory + "\\" + file)  # create a dataframe
 
+        # iterate through each column except the target variable column
         for i in range(0, len(df.columns)-1):
-            df[df.columns[i]] = df[df.columns[i]].astype(int)
+            df[df.columns[i]] = df[df.columns[i]].astype(int)   # convert str to int
             x = df[df.columns[i]].to_numpy().reshape(-1, 1)
             y = df[df.columns[-1]].to_numpy()
-            print(type(x[0][0]), type(y[0]))
-            model = LinearRegression().fit(x, y)
+            model = LinearRegression().fit(x, y)    # create a linear regression model
             print('intercept:', model.intercept_)
             print('slope:', model.coef_)
 
