@@ -3,7 +3,8 @@ import os
 import statistics
 import math
 
-def calculate_Confidence(df,confidence):
+
+def calculate_Confidence(df, confidence):
 
     Z = dict()  # A dictionary to store z values for a given confidence value
     Z[0.80] = 1.282
